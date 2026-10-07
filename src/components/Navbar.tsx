@@ -21,14 +21,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPlanModal }) => {
   return (
     <header className="sticky top-0 z-50 bg-[#FAF8F5]/95 backdrop-blur-md border-b border-[#E8E2D5]/70 transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between min-h-[80px] sm:min-h-[96px] py-2">
           
           {/* Brand Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
+          <Link to="/" className="flex items-center gap-3 group py-1">
             <img
               src="/assets/logo.png"
               alt="Serene Velora Holidays"
-              className="h-12 w-auto object-contain transition-transform group-hover:scale-[1.02]"
+              className="h-16 sm:h-20 md:h-24 w-auto object-contain transition-transform group-hover:scale-105 drop-shadow-sm"
             />
           </Link>
 

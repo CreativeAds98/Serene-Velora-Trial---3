@@ -18,11 +18,11 @@ export const Footer: React.FC = () => {
           
           {/* Logo on Left */}
           <div className="flex items-center">
-            <Link to="/" className="inline-block">
+            <Link to="/" className="inline-block py-1">
               <img
                 src="/assets/logo.png"
                 alt="Serene Velora Holidays"
-                className="h-12 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity"
+                className="h-16 sm:h-20 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity"
               />
             </Link>
           </div>

@@ -50,86 +50,72 @@ export const CustomTripModal: React.FC<CustomTripModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-fadeIn">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 animate-fadeIn">
       <div 
-        className="relative bg-[#FAF8F5] rounded-xl max-w-xl w-full border border-[#E8E2D5] shadow-2xl overflow-hidden"
+        className="relative bg-[#FAF8F5] rounded-xl max-w-lg w-full max-h-[92vh] flex flex-col border border-[#E8E2D5] shadow-2xl overflow-hidden my-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
-        <div className="bg-[#0D3832] text-white p-6 relative">
+        <div className="bg-[#0D3832] text-white px-5 py-3.5 sm:px-6 sm:py-4 relative flex-shrink-0">
           <button
             onClick={onClose}
-            className="absolute top-5 right-5 text-white/70 hover:text-white p-1 rounded-full hover:bg-white/10 transition"
+            className="absolute top-3 right-3 sm:top-3.5 sm:right-3.5 text-white/70 hover:text-white p-1 rounded-full hover:bg-white/10 transition"
+            aria-label="Close modal"
           >
             <X className="w-5 h-5" />
           </button>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-[#B68D40]">
+          <div className="flex items-center gap-2 mb-0.5">
+            <span className="text-[10px] font-semibold tracking-[0.2em] uppercase text-[#B68D40]">
               PLAN YOUR JOURNEY
             </span>
           </div>
-          <h3 className="text-2xl font-serif font-normal">
+          <h3 className="text-lg sm:text-xl font-serif font-normal leading-tight">
             Tell us about <span className="italic text-[#B68D40]">your holiday.</span>
           </h3>
-          <p className="text-xs text-white/70 mt-1 max-w-md">
+          <p className="text-[11px] sm:text-xs text-white/70 mt-0.5 max-w-md">
             Fill in a few details and our Coimbatore travel team will get in touch with personalised recommendations.
           </p>
         </div>
 
         {/* Modal Body */}
-        <div className="p-6 sm:p-8">
+        <div className="p-4 sm:p-5 overflow-y-auto">
           {submitted ? (
-            <div className="text-center py-8 space-y-4">
-              <div className="w-16 h-16 bg-[#0D3832]/10 text-[#0D3832] rounded-full flex items-center justify-center mx-auto">
-                <CheckCircle className="w-9 h-9 text-[#0D3832]" />
+            <div className="text-center py-6 space-y-3">
+              <div className="w-12 h-12 bg-[#0D3832]/10 text-[#0D3832] rounded-full flex items-center justify-center mx-auto">
+                <CheckCircle className="w-7 h-7 text-[#0D3832]" />
               </div>
-              <h4 className="text-2xl font-serif text-[#1C2826]">Thank You, {formData.fullName || 'Traveller'}!</h4>
-              <p className="text-sm text-[#4A5754] max-w-md mx-auto leading-relaxed">
+              <h4 className="text-xl font-serif text-[#1C2826]">Thank You, {formData.fullName || 'Traveller'}!</h4>
+              <p className="text-xs sm:text-sm text-[#4A5754] max-w-md mx-auto leading-relaxed">
                 Your holiday enquiry for <strong className="text-[#0D3832]">{formData.destination}</strong> has been received. Our Coimbatore specialists are reviewing your request and will contact you shortly.
               </p>
-              <div className="pt-4 flex justify-center gap-3">
+              <div className="pt-2 flex justify-center gap-3">
                 <button
                   onClick={handleReset}
-                  className="bg-[#0D3832] text-white px-6 py-2.5 rounded-md text-sm font-medium hover:bg-[#144C44] transition"
+                  className="bg-[#0D3832] text-white px-5 py-2 rounded-md text-xs sm:text-sm font-medium hover:bg-[#144C44] transition"
                 >
                   Close
                 </button>
               </div>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
-              {/* Full Name */}
-              <div>
-                <label className="block text-xs font-semibold text-[#1C2826] uppercase tracking-wider mb-1.5">
-                  Full Name <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  required
-                  placeholder="Your full name"
-                  value={formData.fullName}
-                  onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-md border border-[#E8E2D5] bg-white text-sm text-[#1C2826] focus:outline-none focus:border-[#B68D40] transition"
-                />
-              </div>
-
-              {/* Email & Phone */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <form onSubmit={handleSubmit} className="space-y-3">
+              {/* Row 1: Full Name & Phone Number */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-[#1C2826] uppercase tracking-wider mb-1.5">
-                    Email Address <span className="text-red-500">*</span>
+                  <label className="block text-[11px] font-semibold text-[#1C2826] uppercase tracking-wider mb-1">
+                    Full Name <span className="text-red-500">*</span>
                   </label>
                   <input
-                    type="email"
+                    type="text"
                     required
-                    placeholder="Your email address"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-md border border-[#E8E2D5] bg-white text-sm text-[#1C2826] focus:outline-none focus:border-[#B68D40] transition"
+                    placeholder="Your full name"
+                    value={formData.fullName}
+                    onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                    className="w-full px-3 py-1.5 rounded-md border border-[#E8E2D5] bg-white text-xs sm:text-sm text-[#1C2826] focus:outline-none focus:border-[#B68D40] transition"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-[#1C2826] uppercase tracking-wider mb-1.5">
+                  <label className="block text-[11px] font-semibold text-[#1C2826] uppercase tracking-wider mb-1">
                     Phone Number <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -138,21 +124,34 @@ export const CustomTripModal: React.FC<CustomTripModalProps> = ({
                     placeholder="Your phone number"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-md border border-[#E8E2D5] bg-white text-sm text-[#1C2826] focus:outline-none focus:border-[#B68D40] transition"
+                    className="w-full px-3 py-1.5 rounded-md border border-[#E8E2D5] bg-white text-xs sm:text-sm text-[#1C2826] focus:outline-none focus:border-[#B68D40] transition"
                   />
                 </div>
               </div>
 
-              {/* Destination & Travel Month */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Row 2: Email Address & Preferred Destination */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-[#1C2826] uppercase tracking-wider mb-1.5">
+                  <label className="block text-[11px] font-semibold text-[#1C2826] uppercase tracking-wider mb-1">
+                    Email Address <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="Your email address"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full px-3 py-1.5 rounded-md border border-[#E8E2D5] bg-white text-xs sm:text-sm text-[#1C2826] focus:outline-none focus:border-[#B68D40] transition"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[11px] font-semibold text-[#1C2826] uppercase tracking-wider mb-1">
                     Preferred Destination
                   </label>
                   <select
                     value={formData.destination}
                     onChange={(e) => setFormData({ ...formData, destination: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-md border border-[#E8E2D5] bg-white text-sm text-[#1C2826] focus:outline-none focus:border-[#B68D40] transition"
+                    className="w-full px-3 py-1.5 rounded-md border border-[#E8E2D5] bg-white text-xs sm:text-sm text-[#1C2826] focus:outline-none focus:border-[#B68D40] transition"
                   >
                     <option value="Kerala">Kerala (Backwaters & Hills)</option>
                     <option value="Bali">Bali, Indonesia</option>
@@ -164,14 +163,18 @@ export const CustomTripModal: React.FC<CustomTripModalProps> = ({
                     <option value="Other">Custom / Multiple Destinations</option>
                   </select>
                 </div>
+              </div>
+
+              {/* Row 3: Travel Month & Number of Travellers */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-[#1C2826] uppercase tracking-wider mb-1.5">
+                  <label className="block text-[11px] font-semibold text-[#1C2826] uppercase tracking-wider mb-1">
                     Travel Month
                   </label>
                   <select
                     value={formData.travelMonth}
                     onChange={(e) => setFormData({ ...formData, travelMonth: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-md border border-[#E8E2D5] bg-white text-sm text-[#1C2826] focus:outline-none focus:border-[#B68D40] transition"
+                    className="w-full px-3 py-1.5 rounded-md border border-[#E8E2D5] bg-white text-xs sm:text-sm text-[#1C2826] focus:outline-none focus:border-[#B68D40] transition"
                   >
                     <option value="Upcoming 30-60 Days">Upcoming 30-60 Days</option>
                     <option value="Next 3-6 Months">Next 3-6 Months</option>
@@ -180,62 +183,60 @@ export const CustomTripModal: React.FC<CustomTripModalProps> = ({
                     <option value="Flexible">Dates are Flexible</option>
                   </select>
                 </div>
+                <div>
+                  <label className="block text-[11px] font-semibold text-[#1C2826] uppercase tracking-wider mb-1">
+                    Number of Travellers
+                  </label>
+                  <select
+                    value={formData.travellers}
+                    onChange={(e) => setFormData({ ...formData, travellers: e.target.value })}
+                    className="w-full px-3 py-1.5 rounded-md border border-[#E8E2D5] bg-white text-xs sm:text-sm text-[#1C2826] focus:outline-none focus:border-[#B68D40] transition"
+                  >
+                    <option value="1 Traveller (Solo)">1 Traveller (Solo)</option>
+                    <option value="2 Travellers (Couple)">2 Travellers (Couple / Honeymoon)</option>
+                    <option value="3-5 Travellers (Family)">3-5 Travellers (Family / Group)</option>
+                    <option value="6+ Travellers (Large Group)">6+ Travellers (Large Group)</option>
+                  </select>
+                </div>
               </div>
 
-              {/* Number of Travellers */}
+              {/* Row 4: Holiday Ideas */}
               <div>
-                <label className="block text-xs font-semibold text-[#1C2826] uppercase tracking-wider mb-1.5">
-                  Number of Travellers
-                </label>
-                <select
-                  value={formData.travellers}
-                  onChange={(e) => setFormData({ ...formData, travellers: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-md border border-[#E8E2D5] bg-white text-sm text-[#1C2826] focus:outline-none focus:border-[#B68D40] transition"
-                >
-                  <option value="1 Traveller (Solo)">1 Traveller (Solo)</option>
-                  <option value="2 Travellers (Couple)">2 Travellers (Couple / Honeymoon)</option>
-                  <option value="3-5 Travellers (Family)">3-5 Travellers (Family / Group)</option>
-                  <option value="6+ Travellers (Large Group)">6+ Travellers (Large Group)</option>
-                </select>
-              </div>
-
-              {/* Holiday Ideas */}
-              <div>
-                <label className="block text-xs font-semibold text-[#1C2826] uppercase tracking-wider mb-1.5">
+                <label className="block text-[11px] font-semibold text-[#1C2826] uppercase tracking-wider mb-1">
                   Your Holiday Ideas <span className="text-red-500">*</span>
                 </label>
                 <textarea
-                  rows={3}
+                  rows={2}
                   required
                   placeholder="Tell us about your travel ideas, interests or any special requests..."
                   value={formData.ideas}
                   onChange={(e) => setFormData({ ...formData, ideas: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-md border border-[#E8E2D5] bg-white text-sm text-[#1C2826] focus:outline-none focus:border-[#B68D40] transition resize-none"
+                  className="w-full px-3 py-1.5 rounded-md border border-[#E8E2D5] bg-white text-xs sm:text-sm text-[#1C2826] focus:outline-none focus:border-[#B68D40] transition resize-none"
                 ></textarea>
               </div>
 
-              {/* Agreement */}
-              <div className="flex items-center gap-2 pt-1">
+              {/* Row 5: Agreement Checkbox */}
+              <div className="flex items-center gap-2 pt-0.5">
                 <input
                   type="checkbox"
                   id="modal-agree"
                   checked={formData.agreed}
                   onChange={(e) => setFormData({ ...formData, agreed: e.target.checked })}
-                  className="rounded border-[#E8E2D5] text-[#0D3832] focus:ring-[#B68D40]"
+                  className="rounded border-[#E8E2D5] text-[#0D3832] focus:ring-[#B68D40] w-3.5 h-3.5 cursor-pointer"
                 />
-                <label htmlFor="modal-agree" className="text-xs text-[#525C5A]">
+                <label htmlFor="modal-agree" className="text-[11px] text-[#525C5A] cursor-pointer">
                   I agree to be contacted about my holiday enquiry.
                 </label>
               </div>
 
-              {/* Submit Button */}
+              {/* Row 6: Submit Button */}
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full mt-2 bg-[#0D3832] hover:bg-[#144C44] text-white py-3 rounded-md text-sm font-medium tracking-wide flex items-center justify-center gap-2 transition"
+                className="w-full bg-[#0D3832] hover:bg-[#144C44] text-white py-2 sm:py-2.5 rounded-md text-xs sm:text-sm font-medium tracking-wide flex items-center justify-center gap-2 transition shadow-sm hover:shadow"
               >
                 <span>{submitting ? 'Sending Enquiry...' : 'Send Enquiry'}</span>
-                <Send className="w-4 h-4 text-white/90" />
+                <Send className="w-3.5 h-3.5 text-white/90" />
               </button>
             </form>
           )}
