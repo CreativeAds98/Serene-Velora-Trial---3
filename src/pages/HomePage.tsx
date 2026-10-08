@@ -48,7 +48,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenPlanModal }) => {
               {/* Main Headline */}
               <h1 className="text-4xl sm:text-5xl lg:text-[54px] font-serif font-normal text-[#1C2826] leading-[1.12] tracking-tight">
                 Some journeys<br />
-                <span className="italic font-serif text-[#B68D40]">stay with you.</span>
+                <span className="italic font-serif text-[#B68D40]">stay with you</span>
               </h1>
 
               {/* Subtitles */}

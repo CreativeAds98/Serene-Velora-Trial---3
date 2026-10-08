@@ -29,7 +29,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenPlanModal }) => {
               <h1 className="text-4xl sm:text-5xl lg:text-[54px] font-serif font-normal text-[#1C2826] leading-[1.12]">
                 Every journey<br />
                 begins with a<br />
-                <span className="italic font-serif text-[#B68D40]">little wonder.</span>
+                <span className="italic font-serif text-[#B68D40]">little wonder</span>
               </h1>
 
               <p className="text-[16px] sm:text-[17px] text-[#4A5754] leading-relaxed max-w-md">

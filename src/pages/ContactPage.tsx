@@ -70,7 +70,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenPlanModal }) => 
               <h1 className="text-4xl sm:text-5xl lg:text-[54px] font-serif font-normal text-[#1C2826] leading-[1.12]">
                 Let's turn your<br />
                 <span className="italic font-serif text-[#B68D40]">travel dreams</span><br />
-                <span className="italic font-serif text-[#B68D40]">into plans.</span>
+                <span className="italic font-serif text-[#B68D40]">into plans</span>
               </h1>
 
               <p className="text-[16px] sm:text-[17px] text-[#4A5754] leading-relaxed max-w-md">

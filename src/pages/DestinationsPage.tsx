@@ -98,7 +98,7 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ onOpenPlanMo
             <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-serif font-normal text-white leading-[1.12]">
               Find your<br />
               somewhere<br />
-              <span className="italic font-serif text-[#B68D40]">extraordinary.</span>
+              <span className="italic font-serif text-[#B68D40]">extraordinary</span>
             </h1>
 
             <p className="text-[16px] sm:text-[17px] text-white/85 leading-relaxed pt-2">
